@@ -21,10 +21,18 @@
 <body>
     <header class="header pr">详情<a href="selectThreeTypeVideoHost.do" class="back pa">&lt;返回</a><!-- <a href="" class="search-icon pa">搜索</a> --></header>
     <section class="page-box clearfix">
-	        <video id="myVideo" controls="controls" poster="${list_0.video_photo_url }" width="100%">
-	            <source src="${list_0.video_address }" type="video/mp4" id="sourceId"/>
-	            <p>Your browser does not support the video tag.</p>
-	        </video>
+    		<c:if test="${not empty list_0.video_photo_url }">
+		        <video id="myVideo" controls="controls" poster="${list_0.video_photo_url }" width="100%">
+		            <source src="${list_0.video_address }" type="video/mp4" id="sourceId"/>
+		            <p>Your browser does not support the video tag.</p>
+		        </video>
+	        </c:if>
+	        <c:if test="${empty list_0.video_photo_url}">
+		        <video id="myVideo" controls="controls" poster="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" width="100%">
+		            <source src="${list_0.video_address }" type="video/mp4" id="sourceId"/>
+		            <p>Your browser does not support the video tag.</p>
+		        </video>
+	        </c:if>
 	        <input type="hidden" id="currentTime"/>
 	        <section class="page-links clearfix"><a onclick="play('${list_0.video_address }');" id="playOrpused">播放</a><a onclick="downLoad();">下载</a></section>
 	        <section class="page-info clearfix">

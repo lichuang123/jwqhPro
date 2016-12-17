@@ -46,7 +46,11 @@
         <c:choose>
         	<c:when test="${not empty list1 }">
 				<c:forEach items="${list1 }" var="music">
-					<li><a onclick="showMusicPermission(${music.id});"><img src="${music.music_photo_url }" /><em>${music.music_name }</em>
+					<li>
+					<a onclick="showMusicPermission(${music.id});">
+						<c:if test="${not empty music.music_photo_url}"><img src="${music.music_photo_url }" /></c:if>
+						<c:if test="${empty music.music_photo_url}"><img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" /></c:if>
+					<em>${music.music_name }</em>
              			<span>
               			<c:if test="${music.music_type==1 }">广播录音</c:if>
               			<c:if test="${music.music_type==2 }">名人课堂</c:if>
@@ -63,7 +67,10 @@
         	<c:choose>
         	<c:when test="${not empty list2 }">
 				<c:forEach items="${list2 }" var="music">
-					<li><a onclick="showMusicPermission(${music.id});"><img src="${music.music_photo_url }" /><em>${music.music_name }</em>
+					<li><a onclick="showMusicPermission(${music.id});">
+						<c:if test="${not empty music.music_photo_url }"><img src="${music.music_photo_url }" /></c:if>
+						<c:if test="${empty music.music_photo_url}"><img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" /></c:if>
+					<em>${music.music_name }</em>
              			<span>
               			<c:if test="${music.music_type==1 }">广播录音</c:if>
               			<c:if test="${music.music_type==2 }">名人课堂</c:if>

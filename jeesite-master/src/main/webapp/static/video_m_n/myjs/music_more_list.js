@@ -43,8 +43,15 @@
 				var text = "";
 				if(data.length>0){
 					//text += "<section class='list-box-con clearfix' style='border-top:0;'><ul class='list-box-con-s clearfix' style='border-top:0;'>";
+					var frmUrl = $("#frmUrl").val();
 					$.each(data,function(i,obj){
-						text += "<li><a onclick=\"showMusicPermission('"+obj.id+"');\"><img src="+obj.music_photo_url+"><em>"+obj.music_name+"</em><span>";
+						text += "<li><a onclick=\"showMusicPermission('"+obj.id+"');\">";
+						if(null != obj.music_photo_url || obj.music_photo_url != ''){
+							text += "<img src="+obj.music_photo_url+">";
+						}else{
+							text += "<img src='"+frmUrl+"/static/video_m_n/pic/pic2.png'>";
+						}
+						text += "<em>"+obj.music_name+"</em><span>";
 						if(obj.music_type==1)text += "广播录音";
 						if(obj.music_type==2)text += "名人课堂";
 						//if(obj.music_type==3)text += "专题片";

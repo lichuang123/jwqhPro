@@ -23,6 +23,7 @@
 
 <body onload="loaded()">
 	<input type="hidden" id="video_type_id" value="${type }"/>
+	<input type="hidden" id="frmUrl" value="${pageContext.request.contextPath}"/>
 	<section id="wrapper">
 		<section id="scroller">
 			<section id="pullDown">

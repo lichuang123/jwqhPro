@@ -48,8 +48,16 @@
 				var text = "";
 				if(data.length>0){
 					//text += "<section class='list-box-con clearfix' style='border-top:0;'><ul class='list-box-con-s clearfix' style='border-top:0;'>";
+					var frmUrl = $("#frmUrl").val();
 					$.each(data,function(i,obj){
-						text += "<li><a onclick=\"showVideoPermission('"+obj.id+"');\"><img src="+obj.video_photo_url+"><em>"+obj.video_name+"</em><span>";
+						text += "<li><a onclick=\"showVideoPermission('"+obj.id+"');\">";
+						if(null != obj.video_photo_url && obj.video_photo_url != ''){
+							text += "<img src="+obj.video_photo_url+">";
+						}else{
+							text += "<img src='"+frmUrl+"/static/video_m_n/pic/pic2.png'>";
+						}
+						
+						text += "<em>"+obj.video_name+"</em><span>";
 						if(obj.video_type==1)text += "电视剧";
 						if(obj.video_type==2)text += "电影";
 						if(obj.video_type==3)text += "专题片";

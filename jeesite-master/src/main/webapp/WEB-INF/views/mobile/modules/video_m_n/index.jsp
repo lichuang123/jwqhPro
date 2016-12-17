@@ -92,10 +92,18 @@
                         <c:choose>
                         	<c:when test="${not empty v_list }">
                         		<c:forEach items="${v_list }" var="video">
-                        			<li><a onclick="showVideoPermission(${video.id});"><img src="${video.video_photo_url }" /><em>${video.video_name }</em>
-                        			<span><c:if test="${video.video_type==1 }">电视剧</c:if>
-                        			<c:if test="${video.video_type==2 }">电影</c:if>
-                        			<c:if test="${video.video_type==3 }">专题片</c:if></span></a></li>
+                        			<li>
+                        				<a onclick="showVideoPermission(${video.id});">
+                        				<c:if test="${ empty video.video_photo_url}">
+                        					<img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" />
+                        				</c:if>
+                        				<c:if test="${not empty video.video_photo_url}">
+                        					<img src="${video.video_photo_url }" />
+                        				</c:if>
+                        				<em>${video.video_name }</em>
+	                        			<span><c:if test="${video.video_type==1 }">电视剧</c:if>
+	                        			<c:if test="${video.video_type==2 }">电影</c:if>
+	                        			<c:if test="${video.video_type==3 }">专题片</c:if></span></a></li>
                         		</c:forEach>
                         	</c:when>
                         </c:choose>
@@ -108,7 +116,10 @@
                     	<c:choose>
                         	<c:when test="${not empty m_list }">
                         		<c:forEach items="${m_list }" var="music">
-                        			<li><a onclick="showMusicPermission(${music.id});"><img src="${music.music_photo_url }" /><em>${music.music_name }</em>
+                        			<li><a onclick="showMusicPermission(${music.id});">
+                        				<c:if test="${not empty music.music_photo_url }"><img src="${music.music_photo_url }" /></c:if>
+                        				<c:if test="${empty music.music_photo_url }"><img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" /></c:if>
+                        			<em>${music.music_name }</em>
                         			<span>
 	                        			<c:if test="${music.music_type==1 }">广播录音</c:if>
 	                        			<c:if test="${music.music_type==2 }">名人课堂</c:if>

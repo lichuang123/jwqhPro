@@ -31,7 +31,14 @@
         	<c:choose>
         		<c:when test="${not empty map.tv }">
         			<c:forEach items="${map.tv }" var="tv">
-        				<li><a onclick="showVideoPermission(${tv.id});"><img src="${tv.video_photo_url }" /><em>${tv.video_name }</em><span>电视剧</span></a></li>
+        				<li><a onclick="showVideoPermission(${tv.id});">
+        					<c:if test="${not empty tv.video_photo_url }">
+        						<img src="${tv.video_photo_url }" />
+        					</c:if>
+        					<c:if test="${empty tv.video_photo_url}">
+        						<img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" />
+        					</c:if>
+        				<em>${tv.video_name }</em><span>电视剧</span></a></li>
         			</c:forEach>
         		</c:when>
         	</c:choose>
@@ -44,7 +51,14 @@
         	<c:choose>
         		<c:when test="${not empty map.movie }">
         			<c:forEach items="${map.movie }" var="movie">
-        				<li><a onclick="showVideoPermission(${movie.id});"><img src="${movie.video_photo_url }" /><em>${movie.video_name }</em><span>电影</span></a></li>
+        				<li><a onclick="showVideoPermission(${movie.id});">
+        				<c:if test="${not empty movie.video_photo_url }">
+        					<img src="${movie.video_photo_url }" />
+        				</c:if>
+        				<c:if test="${empty movie.video_photo_url }">
+        					<img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" />
+        				</c:if>
+        				<em>${movie.video_name }</em><span>电影</span></a></li>
         			</c:forEach>
         		</c:when>
         	</c:choose>
@@ -57,7 +71,15 @@
         	<c:choose>
         		<c:when test="${not empty map.subject }">
         			<c:forEach items="${map.subject }" var="subject">
-        				<li><a onclick="showVideoPermission(${subject.id});"><img src="${subject.video_photo_url }" /><em>${subject.video_name }</em><span>专题片</span></a></li>
+        				<li><a onclick="showVideoPermission(${subject.id});">
+        				<c:if test="${not empty subject.video_photo_url}">
+        					<img src="${subject.video_photo_url }" />
+        				</c:if>
+        				<c:if test="${empty subject.video_photo_url}">
+        					<img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" />
+        				</c:if>
+        				
+        				<em>${subject.video_name }</em><span>专题片</span></a></li>
         			</c:forEach>
         		</c:when>
         	</c:choose>

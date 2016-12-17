@@ -25,7 +25,10 @@
 <body>
     <header class="header pr">音频专区<a href="goMusicListPage.do" class="back pa">&lt;返回</a><!-- <a href="" class="search-icon pa">搜索</a> --></header>
     <section class="page-box clearfix">
-        <div class="music_showPhoto"><img src="${list_0.music_photo_url }" align="" /></div>
+        <div class="music_showPhoto">
+        	<c:if test="${not empty list_0.music_photo_url }"><img src="${list_0.music_photo_url }" align="" /></c:if>
+        	<c:if test="${empty list_0.music_photo_url}"><img src="${pageContext.request.contextPath}/static/video_m_n/pic/pic2.png" align="" /></c:if>
+        </div>
         <audio autoplay="autoplay" id="audio_id" style="width:100%;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;position:relative;top:-4.0rem;z-index:100;" controls="controls" loop="loop" preload="auto" src="${list_0.music_address }">
 		      你的浏览器不支持audio标签
 		</audio>
